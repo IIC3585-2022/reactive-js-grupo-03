@@ -16,7 +16,7 @@ $ npm install
 Luego, se puede correr la demo usando el siguiente comando:
 
 ```sh
-$ npm run demo
+$ npm run start
 ```
 
 # 1. Composición<a id="composicion"></a>
