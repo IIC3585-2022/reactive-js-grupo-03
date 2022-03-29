@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/IIC3585-2022/reactive-js-grupo-03/issues"
   },
-  "homepage": "https://github.com/IIC3585-2022/reactive-js-grupo-03#readme"
+  "homepage": "https://github.com/IIC3585-2022/reactive-js-grupo-03#readme",
+  "dependencies": {
+    "rxjs": "^7.5.5"
+  }
 }
