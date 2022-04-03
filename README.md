@@ -11,13 +11,13 @@
 Primero instalar las dependencias:
 
 ```sh
-$ npm install
+npm install
 ```
 
 Por ultimo, se puede correr la app usando el siguiente comando:
 
 ```sh
-$ npm start
+npm start
 ```
 
 Encontrará una interfaz de usuario que le permitirá interactuar con el sistema, ingresando a su browser de preferencia y dirigiendose a la dirección:
