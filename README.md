@@ -13,10 +13,16 @@ Primero instalar las dependencias:
 $ npm install
 ```
 
-Luego, se puede correr la demo usando el siguiente comando:
+Luego, debera construir el ambiente:
 
 ```sh
-$ npm run start
+$ npm run build
+```
+
+Por ultimo, se puede correr la app usando el siguiente comando:
+
+```sh
+$ npm start
 ```
 
 # 1. Composición<a id="composicion"></a>
@@ -26,15 +32,27 @@ Para las tareas, es relevante tener la siguiente organización de archivos:
 ```
 .
 │   index.js
+|   index.html
 │   README.md
+|   package.json
+|   package-lock.json
 │   .gitignore
 │
 └───src
 |   |   app.js
 |   |
-│   └───data
-|   |   |   <????>
-
+│   └───assets
+|   |   |  
+│   |   └───js
+|   |       |   window.js
+|   |   |
+│   |   └───styles
+|   |       |   index.css
+|   |
+│   └───setup
+|   |   |   map.js
+|   |
+│   └───views
 ```
 
 A continuación se describen las funcionalidades de cada archivo y carpeta:
