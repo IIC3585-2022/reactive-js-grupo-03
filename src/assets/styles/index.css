@@ -17,10 +17,18 @@ body {
 }
 
 .wrapper {
-    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: stretch;
     flex-wrap: nowrap;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    border: 5px solid rgb(251, 255, 0);
 }

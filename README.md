@@ -4,6 +4,7 @@
 # Tabla de contenidos
 0. [Ejecucion](#ejecucion)
 1. [Composición](#composicion)
+2. [Dependencias](#dependencias)
 
 # 0. Ejecucion<a id="ejecucion"></a>
 
@@ -13,16 +14,16 @@ Primero instalar las dependencias:
 $ npm install
 ```
 
-Luego, debera construir el ambiente:
-
-```sh
-$ npm run build
-```
-
 Por ultimo, se puede correr la app usando el siguiente comando:
 
 ```sh
 $ npm start
+```
+
+Encontrará una interfaz de usuario que le permitirá interactuar con el sistema, ingresando a su browser de preferencia y dirigiendose a la dirección:
+
+```
+http://localhost:8080
 ```
 
 # 1. Composición<a id="composicion"></a>
@@ -59,3 +60,12 @@ A continuación se describen las funcionalidades de cada archivo y carpeta:
 - `src`: Carpeta donde se almacenan los datos y se mantiene el codigo funcional:
     - `app.js`: ...
     - `data`: ...
+
+
+# 2. Dependencias<a id="dependencias"></a>
+
+En el siguiente listado mostramos las dependencias que se requieren para correr la aplicación:
+
+ * [npm](https://www.npmjs.com/)
+ * [jquery](https://jquery.com/)
+ * [http-server](https://www.npmjs.com/package/http-server)
