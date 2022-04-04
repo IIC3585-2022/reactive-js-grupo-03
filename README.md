@@ -4,20 +4,30 @@
 # Tabla de contenidos
 0. [Ejecucion](#ejecucion)
 1. [Composición](#composicion)
+2. [Dependencias](#dependencias)
 
 # 0. Ejecucion<a id="ejecucion"></a>
 
 Primero instalar las dependencias:
 
 ```sh
-$ npm install
+npm install
 ```
 
-Luego, se puede correr la demo usando el siguiente comando:
+Luego, debera construir el ambiente:
 
 ```sh
-$ npm run start
+npm run build
 ```
+
+Por ultimo, se puede correr la app usando el siguiente comando:
+
+```sh
+$ npm start
+```
+
+Encontrará una interfaz de usuario que le permitirá interactuar con el sistema, ingresando a su browser de preferencia y dirigiendose a la dirección que levante el sistema.
+
 
 # 1. Composición<a id="composicion"></a>
 
@@ -26,18 +36,40 @@ Para las tareas, es relevante tener la siguiente organización de archivos:
 ```
 .
 │   index.js
+|   index.html
 │   README.md
+|   package.json
+|   package-lock.json
 │   .gitignore
 │
 └───src
 |   |   app.js
 |   |
-│   └───data
-|   |   |   <????>
-
+│   └───assets
+|   |   |  
+│   |   └───js
+|   |       |   window.js
+|   |   |
+│   |   └───styles
+|   |       |   index.css
+|   |
+│   └───setup
+|   |   |   map.js
+|   |
+│   └───views
 ```
 
 A continuación se describen las funcionalidades de cada archivo y carpeta:
 - `src`: Carpeta donde se almacenan los datos y se mantiene el codigo funcional:
     - `app.js`: ...
     - `data`: ...
+
+
+# 2. Dependencias<a id="dependencias"></a>
+
+En el siguiente listado mostramos las dependencias que se requieren para correr la aplicación:
+
+ * [npm](https://www.npmjs.com/)
+ * [jquery](https://jquery.com/)
+ * [parcel](https://parceljs.org/)
+ * [rimraf](https://www.npmjs.com/package/rimraf)
