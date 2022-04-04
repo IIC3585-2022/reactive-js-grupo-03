@@ -1,3 +1,5 @@
-const { setGameBoard } = require('./src/app');
+const { setGameBoard, drawMaze, setGameMaze } = require('./src/app');
 
-setGameBoard("#game");
+const gameGrid = setGameBoard("#game");
+const mazeGrid = setGameMaze(gameGrid, "#maze");
+drawMaze(mazeGrid);

@@ -1,7 +1,10 @@
+const { setDivGrid, setSVGG } = require('./assets/js/window');
+
+
 const { MAP } = require('./assets/js/map/index');
 const { MAP_PICTURE } = require('./setup/map/picture');
-
-import * as d3 from "d3";
+const { CUBE_SIZE } = require('./setup/map/cube');
+const { map } = require('d3');
 
 const margin = {
     top: 10,
@@ -11,12 +14,23 @@ const margin = {
 };
 
 const setGameBoard = (id) => {
-    return d3.select(id)
-        .append("svg")
-        .attr("id", "game_board")
-        .attr("width", MAP_PICTURE.width + margin.left + margin.right)
-        .attr("height", MAP_PICTURE.height + margin.top + margin.bottom);
+    return setDivGrid(margin, MAP_PICTURE.height * CUBE_SIZE, MAP_PICTURE.width * CUBE_SIZE)(id);
 };
 
+const setGameMaze = (grid, id) => {
+    return setSVGG(margin)(grid, id);
+};
 
-module.exports = { setGameBoard };
+const drawPicture = (mapGrid) => (picture, cubeSize) => {
+    const mapObj = MAP(mapGrid);
+    mapObj.setMap(picture.map);
+    mapObj.setHeight(picture.height);
+    mapObj.setWidth(picture.width);
+    mapObj.setCubeSize(cubeSize);
+    mapObj.draw();
+}
+
+const drawMaze = (mapGrid) => { return drawPicture(mapGrid)(MAP_PICTURE, CUBE_SIZE); }
+
+
+module.exports = { setGameBoard, drawMaze, setGameMaze };

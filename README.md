@@ -72,3 +72,4 @@ En el siguiente listado mostramos las dependencias que se requieren para correr 
  * [npm](https://www.npmjs.com/)
  * [jquery](https://jquery.com/)
  * [parcel](https://parceljs.org/)
+ * [rimraf](https://www.npmjs.com/package/rimraf)
