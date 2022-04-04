@@ -14,17 +14,20 @@ Primero instalar las dependencias:
 npm install
 ```
 
+Luego, debera construir el ambiente:
+
+```sh
+npm run build
+```
+
 Por ultimo, se puede correr la app usando el siguiente comando:
 
 ```sh
-npm start
+$ npm start
 ```
 
-Encontrará una interfaz de usuario que le permitirá interactuar con el sistema, ingresando a su browser de preferencia y dirigiendose a la dirección:
+Encontrará una interfaz de usuario que le permitirá interactuar con el sistema, ingresando a su browser de preferencia y dirigiendose a la dirección que levante el sistema.
 
-```
-http://localhost:8080
-```
 
 # 1. Composición<a id="composicion"></a>
 
@@ -68,4 +71,4 @@ En el siguiente listado mostramos las dependencias que se requieren para correr 
 
  * [npm](https://www.npmjs.com/)
  * [jquery](https://jquery.com/)
- * [http-server](https://www.npmjs.com/package/http-server)
+ * [parcel](https://parceljs.org/)

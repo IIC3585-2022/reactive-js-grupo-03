@@ -1,1 +1,3 @@
-console.log("index.js");
+const { setGameBoard } = require('./src/app');
+
+setGameBoard("#game");
