@@ -1,10 +1,9 @@
 const { setDivGrid, setSVGG } = require('./assets/js/window');
 
 
-const { MAP } = require('./assets/js/map/index');
+const { MAP, drawCircles, drawCubes } = require('./assets/js/map/index');
 const { MAP_PICTURE } = require('./setup/map/picture');
 const { CUBE_SIZE } = require('./setup/map/cube');
-const { map } = require('d3');
 
 const margin = {
     top: 10,
@@ -17,20 +16,41 @@ const setGameBoard = (id) => {
     return setDivGrid(margin, MAP_PICTURE.height * CUBE_SIZE, MAP_PICTURE.width * CUBE_SIZE)(id);
 };
 
-const setGameMaze = (grid, id) => {
-    return setSVGG(margin)(grid, id);
+const setGameGrid = (grid, id) => {
+    return setSVGG(margin, id)(grid);
 };
 
-const drawPicture = (mapGrid) => (picture, cubeSize) => {
-    const mapObj = MAP(mapGrid);
-    mapObj.setMap(picture.map);
-    mapObj.setHeight(picture.height);
-    mapObj.setWidth(picture.width);
-    mapObj.setCubeSize(cubeSize);
-    mapObj.draw();
+const drawGame = (mapGrid) => {
+    const mazeMap = MAP(setGameGrid(mapGrid, "#maze"));
+    const pointsMap = MAP(setGameGrid(mapGrid, "#points"));
+    const _map = [];
+
+    return {
+        setMap(map) {
+            _map.push(...map);
+        },
+        async drawMaze() {
+            await mazeMap.draw(
+                _map,
+                drawCubes({
+                    cubeSize: CUBE_SIZE,
+                    width: CUBE_SIZE,
+                    height: CUBE_SIZE,
+                })(function (e) { return true; })
+            );
+        },
+        async drawPoints() {
+            await pointsMap.draw(
+                _map,
+                drawCircles({
+                    cubeSize: CUBE_SIZE,
+                    width: 10,
+                    height: 10,
+                })(function (e) { return true; })
+            );
+        }
+    }
 }
 
-const drawMaze = (mapGrid) => { return drawPicture(mapGrid)(MAP_PICTURE, CUBE_SIZE); }
 
-
-module.exports = { setGameBoard, drawMaze, setGameMaze };
+module.exports = { setGameBoard, drawGame };
