@@ -1,7 +1,6 @@
 {
     "env": {
         "browser": true,
-        "commonjs": true,
         "es2021": true,
         "node": true
     },
@@ -16,9 +15,14 @@
             "warn",
             "always-multiline"
         ],
+        "generator-star-spacing": "off",
         "max-len": [
             "warn",
             99
+        ],
+        "semi": [
+            "warn",
+            "always"
         ],
         "space-before-function-paren": "off"
     }

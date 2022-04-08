@@ -1,1 +1,1 @@
-export const CUBE_SIZE = 30
+export const CUBE_SIZE = 30;

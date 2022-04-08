@@ -1,41 +1,41 @@
-import * as d3 from 'd3'
+import * as d3 from 'd3';
 
 const colorByNumber = (number) => {
   switch (number) {
     case -1:
-      return 'black'
+      return 'black';
     case 0:
-      return 'black'
+      return 'black';
     default:
-      return 'blue'
+      return 'blue';
   }
-}
+};
 
 /**
 @param d3.Object
 @return functions
 */
 const MAP = (mapGrid) => {
-  const _mapGrid = mapGrid
-  const _map = []
-  let _cubeSize = 0
+  const _mapGrid = mapGrid;
+  const _map = [];
+  let _cubeSize = 0;
   const _mapDim = {
     height: 0,
     width: 0,
-  }
+  };
 
   return {
     setMap(map) {
-      _map.push(...map)
+      _map.push(...map);
     },
     setHeight(height) {
-      _mapDim.height = height
+      _mapDim.height = height;
     },
     setWidth(width) {
-      _mapDim.width = width
+      _mapDim.width = width;
     },
     setCubeSize(cubeSize) {
-      _cubeSize = cubeSize
+      _cubeSize = cubeSize;
     },
     draw() {
       _mapGrid
@@ -53,10 +53,10 @@ const MAP = (mapGrid) => {
             .attr('y', () => j * _cubeSize)
             .attr('width', _cubeSize)
             .attr('height', _cubeSize)
-            .attr('fill', (d, _) => colorByNumber(d))
-        })
+            .attr('fill', (d, _) => colorByNumber(d));
+        });
     },
-  }
-}
+  };
+};
 
-module.exports = { MAP, colorByNumber }
+module.exports = { MAP, colorByNumber };

@@ -9,3 +9,9 @@ node_modules/
 # Local cache
 .parcel-cache/
 dist/
+
+# Temporary ignores
+src/pacman.js
+src/movement.js
+src/game_logic.js
+test.js
