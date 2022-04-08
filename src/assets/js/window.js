@@ -15,4 +15,4 @@ const setSVGG = (margin) => (grid, id) => {
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
 };
 
-module.exports = { setDivGrid, setSVGG };
+export { setDivGrid, setSVGG };
