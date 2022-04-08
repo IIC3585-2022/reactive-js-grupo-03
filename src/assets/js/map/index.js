@@ -1,14 +1,58 @@
 import * as d3 from "d3";
 
-const colorByNumber = (number) => {
-    switch (number) {
-        case -1:
-            return 'black';
-        case 0:
-            return 'black';
-        default:
-            return 'blue';
-    }
+/** 
+@param dim = {
+    cubeSize,
+    width,
+    height
+}
+@param circleFilter = function return boolean
+@return void
+*/
+
+const drawCircles = (dim) => (circleFilter) => (grid, data, j) => {
+    const colorByNumber = (number) => {
+        switch (number) {
+            case 0:
+                return 'yellow';
+            default:
+                return 'black';
+        }
+    };
+    /// d3 add circles
+    grid
+        .selectAll('circle')
+        .data(data)
+        .enter().append("circle")
+        .style("stroke", (d, _) => colorByNumber(d))
+        .style("fill", (d, _) => colorByNumber(d))
+        .attr("r", dim.width)
+        .attr("cx", (_, i) => (i + 1 / 2) * dim.cubeSize)
+        .attr("cy", (j + 1 / 2) * dim.cubeSize);
+}
+
+
+const drawCubes = (dim) => (cubeFilter) => (grid, data, j) => {
+    const colorByNumber = (number) => {
+        switch (number) {
+            case -1:
+                return 'black';
+            case 0:
+                return 'black';
+            default:
+                return 'blue';
+        }
+    };
+    /// d3 add cubes
+    grid
+        .selectAll('rect')
+        .data(data)
+        .enter().append("rect")
+        .attr('x', (_, i) => i * dim.cubeSize)
+        .attr('y', () => j * dim.cubeSize)
+        .attr('width', dim.width)
+        .attr('height', dim.height)
+        .attr('fill', (d, _) => colorByNumber(d));
 }
 
 /** 
@@ -17,46 +61,19 @@ const colorByNumber = (number) => {
 */
 const MAP = (mapGrid) => {
     const _mapGrid = mapGrid;
-    const _map = [];
-    let _cubeSize = 0;
-    let _mapDim = {
-        height: 0,
-        width: 0,
-    };
 
     return {
-        setMap(map) {
-            _map.push(...map);
-        },
-        setHeight(height) {
-            _mapDim.height = height;
-        },
-        setWidth(width) {
-            _mapDim.width = width;
-        },
-        setCubeSize(cubeSize) {
-            _cubeSize = cubeSize;
-        },
-        draw() {
+        draw(map, drawFunction) {
             _mapGrid
-                .selectAll('rect')
-                .data(_map)
+                .selectAll('g')
+                .data(map)
                 .enter()
                 .append('g')
-                .each(function (d, j) {
-                    d3.select(this)
-                        .selectAll('rect')
-                        .data(d)
-                        .enter()
-                        .append('rect')
-                        .attr('x', (_, i) => i * _cubeSize)
-                        .attr('y', () => j * _cubeSize)
-                        .attr('width', _cubeSize)
-                        .attr('height', _cubeSize)
-                        .attr('fill', (d, _) => colorByNumber(d));
+                .each(function (data, j) {
+                    drawFunction(d3.select(this), data, j);
                 });
         }
     };
 };
 
-module.exports = { MAP, colorByNumber };
+module.exports = { MAP, drawCircles, drawCubes };
