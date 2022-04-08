@@ -6,6 +6,8 @@ const colorByNumber = (number) => {
       return 'black';
     case 0:
       return 'black';
+    case 15:
+      return 'yellow';
     default:
       return 'blue';
   }
