@@ -1,8 +1,8 @@
 import { setDivGrid, setSVGG } from './assets/js/window';
 
-import { MAP } from './assets/js/map/index';
-import { MAP_PICTURE } from './setup/map/picture';
-import { CUBE_SIZE } from './setup/map/cube';
+const { MAP } = require('./assets/js/map/index');
+const { MAP_PICTURE } = require('./setup/map/picture');
+const { CUBE_SIZE } = require('./setup/map/cube');
 
 const margin = {
   top: 10,

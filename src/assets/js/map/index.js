@@ -59,4 +59,5 @@ const MAP = (mapGrid) => {
   };
 };
 
-module.exports = { MAP, colorByNumber };
+// module.exports = { MAP, colorByNumber };
+export { MAP, colorByNumber };
