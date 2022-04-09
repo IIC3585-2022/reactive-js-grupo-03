@@ -1,5 +1,7 @@
+import Pacman from './pacman';
+
 import { setDivGrid, setSVGG } from './assets/js/window';
-import { MAP } from './assets/js/map/index';
+import { MAP, drawCircles, drawCubes } from './assets/js/map/index';
 import { MAP_PICTURE } from './setup/map/picture';
 import { CUBE_SIZE } from './setup/map/cube';
 
@@ -14,19 +16,52 @@ const setGameBoard = (id) => {
   return setDivGrid(margin, MAP_PICTURE.height * CUBE_SIZE, MAP_PICTURE.width * CUBE_SIZE)(id);
 };
 
-const setGameMaze = (grid, id) => {
-  return setSVGG(margin)(grid, id);
+const setGameGrid = (grid, id) => {
+  return setSVGG(margin, id)(grid);
 };
 
-const drawPicture = (mapGrid) => (picture, cubeSize) => {
-  const mapObj = MAP(mapGrid);
-  mapObj.setMap(picture.map);
-  mapObj.setHeight(picture.height);
-  mapObj.setWidth(picture.width);
-  mapObj.setCubeSize(cubeSize);
-  mapObj.draw();
+const drawGame = (mapGrid) => {
+  const mazeMap = MAP(setGameGrid(mapGrid, '#maze'));
+  const pointsMap = MAP(setGameGrid(mapGrid, '#points'));
+  const _map = [];
+
+  return {
+    setMap(map) {
+      _map.push(...map);
+    },
+    drawMaze() {
+      mazeMap.draw(
+        _map,
+        drawCubes({
+          cubeSize: CUBE_SIZE,
+          width: CUBE_SIZE,
+          height: CUBE_SIZE,
+        })(e => true),
+      );
+    },
+    drawPoints() {
+      pointsMap.draw(
+        _map,
+        drawCircles({
+          cubeSize: CUBE_SIZE,
+          width: 5,
+          height: 5,
+        })(e => true),
+      );
+    },
+  };
 };
 
-const drawMaze = (mapGrid) => { return drawPicture(mapGrid)(MAP_PICTURE, CUBE_SIZE); };
+function getPacman(direction) {
+  // = 0; row < MAP_PICTURE.height; row++
+  // = 0; col < MAP_PICTURE.width; col++
+  for (const row of MAP_PICTURE) {
+    for (const tile of row) {
+      if (tile === 15) {
+        return new Pacman(1);
+      }
+    }
+  }
+}
 
-export { setGameBoard, drawMaze, setGameMaze };
+export { setGameBoard, drawGame, getPacman };

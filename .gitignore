@@ -13,5 +13,4 @@ dist/
 # Temporary ignores
 src/pacman.js
 src/movement.js
-src/game_logic.js
 test.js

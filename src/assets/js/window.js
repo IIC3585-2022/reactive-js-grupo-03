@@ -8,9 +8,8 @@ const setDivGrid = (margin, height, width) => (id) => {
     .attr('height', height + margin.top + margin.bottom);
 };
 
-const setSVGG = (margin) => (grid, id) => {
-  return grid
-    .append('g')
+const setSVGG = (margin, id) => (grid) => {
+  return grid.append('g')
     .attr('id', id)
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
 };

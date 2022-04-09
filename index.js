@@ -1,5 +1,8 @@
-const { setGameBoard, drawMaze, setGameMaze } = require('./src/app');
+import { setGameBoard, drawGame } from './src/app';
+import { MAP_PICTURE } from './src/setup/map/picture';
 
 const gameGrid = setGameBoard('#game');
-const mazeGrid = setGameMaze(gameGrid, '#maze');
-drawMaze(mazeGrid);
+const gameDrawable = drawGame(gameGrid);
+gameDrawable.setMap(MAP_PICTURE.map);
+gameDrawable.drawMaze();
+gameDrawable.drawPoints();
