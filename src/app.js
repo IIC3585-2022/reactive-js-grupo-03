@@ -1,9 +1,9 @@
 import Pacman from './pacman';
 
-import { setDivGrid, setSVGG } from './assets/js/window';
-import { MAP, drawCircles, drawCubes } from './assets/js/map/index';
-import { MAP_PICTURE } from './setup/map/picture';
-import { CUBE_SIZE } from './setup/map/cube';
+
+const { MAP, drawCircles, drawCubes, deleteCircles } = require('./assets/js/map/index');
+const { MAP_PICTURE } = require('./setup/map/picture');
+const { CUBE_SIZE } = require('./setup/map/cube');
 
 const margin = {
   top: 10,
@@ -21,46 +21,40 @@ const setGameGrid = (grid, id) => {
 };
 
 const drawGame = (mapGrid) => {
-  const mazeMap = MAP(setGameGrid(mapGrid, '#maze'));
-  const pointsMap = MAP(setGameGrid(mapGrid, '#points'));
+  const mazeMap = MAP(setGameGrid(mapGrid, "#maze"));
   const _map = [];
 
   return {
     setMap(map) {
       _map.push(...map);
     },
-    drawMaze() {
-      mazeMap.draw(
+    async drawMaze() {
+      await mazeMap.draw(
         _map,
         drawCubes({
           cubeSize: CUBE_SIZE,
           width: CUBE_SIZE,
           height: CUBE_SIZE,
-        })(e => true),
+        })
       );
     },
-    drawPoints() {
-      pointsMap.draw(
+    async drawPoints() {
+      await mazeMap.draw(
         _map,
         drawCircles({
           cubeSize: CUBE_SIZE,
           width: 5,
           height: 5,
-        })(e => true),
+        })
       );
     },
-  };
-};
-
-function getPacman(velocity) {
-  for (let row = 0; row < MAP_PICTURE.height; row++) {
-    for (let col = 0; col < MAP_PICTURE.width; col++) {
-      if (MAP_PICTURE.map[row][col] === 15) {
-        MAP_PICTURE.map[row][col] = 0;
-        return new Pacman(col, row, velocity, CUBE_SIZE, MAP_PICTURE);
-      }
+    async deletePoints() {
+      await mazeMap.delete(
+        deleteCircles
+      );
     }
   }
+}
 }
 
 export { setGameBoard, drawGame, getPacman };
