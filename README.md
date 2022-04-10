@@ -14,7 +14,7 @@ Primero instalar las dependencias:
 npm install
 ```
 
-Luego, debera construir el ambiente:
+Luego, deberá construir el ambiente:
 
 ```sh
 npm run build
