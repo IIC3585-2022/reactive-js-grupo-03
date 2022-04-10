@@ -112,4 +112,4 @@ const MAP = (mapGrid) => {
     };
 };
 
-module.exports = { MAP, drawCircles, drawCubes, deleteCircles, drawPlayer };
+module.exports = { MAP, drawCircles, drawCubes, deleteCircles, drawCharacter };
