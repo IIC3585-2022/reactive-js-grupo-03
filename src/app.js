@@ -1,6 +1,4 @@
-import Pacman from './pacman';
-
-
+const { setDivGrid, setSVGG } = require('./assets/js/window');
 const { MAP, drawCircles, drawCubes, deleteCircles } = require('./assets/js/map/index');
 const { MAP_PICTURE } = require('./setup/map/picture');
 const { CUBE_SIZE } = require('./setup/map/cube');
@@ -21,7 +19,7 @@ const setGameGrid = (grid, id) => {
 };
 
 const drawGame = (mapGrid) => {
-  const mazeMap = MAP(setGameGrid(mapGrid, "#maze"));
+  const mazeMap = MAP(setGameGrid(mapGrid, '#maze'));
   const _map = [];
 
   return {
@@ -35,7 +33,7 @@ const drawGame = (mapGrid) => {
           cubeSize: CUBE_SIZE,
           width: CUBE_SIZE,
           height: CUBE_SIZE,
-        })
+        }),
       );
     },
     async drawPoints() {
@@ -45,16 +43,15 @@ const drawGame = (mapGrid) => {
           cubeSize: CUBE_SIZE,
           width: 5,
           height: 5,
-        })
+        }),
       );
     },
     async deletePoints() {
       await mazeMap.delete(
-        deleteCircles
+        deleteCircles,
       );
-    }
-  }
-}
-}
+    },
+  };
+};
 
-export { setGameBoard, drawGame, getPacman };
+export { setGameBoard, drawGame };
