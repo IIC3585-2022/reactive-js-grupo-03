@@ -16,7 +16,7 @@ const drawCircles = (dim) => (circleFilter) => (grid, data, j) => {
       case 0:
         return 'yellow';
       case 15:
-        return 'orange';
+        return 'limegreen';
       default:
         return 'black';
     }

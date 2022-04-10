@@ -52,13 +52,12 @@ const drawGame = (mapGrid) => {
   };
 };
 
-function getPacman(direction) {
-  // = 0; row < MAP_PICTURE.height; row++
-  // = 0; col < MAP_PICTURE.width; col++
-  for (const row of MAP_PICTURE) {
-    for (const tile of row) {
-      if (tile === 15) {
-        return new Pacman(1);
+function getPacman(velocity) {
+  for (let row = 0; row < MAP_PICTURE.height; row++) {
+    for (let col = 0; col < MAP_PICTURE.width; col++) {
+      if (MAP_PICTURE.map[row][col] === 15) {
+        MAP_PICTURE.map[row][col] = 0;
+        return new Pacman(col, row, velocity, CUBE_SIZE, MAP_PICTURE);
       }
     }
   }
