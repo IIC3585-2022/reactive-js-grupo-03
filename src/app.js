@@ -26,6 +26,9 @@ const p2Keys = {
   down: 40,
 };
 
+export const pacman1 = new Pacman(10, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
+export const pacman2 = new Pacman(18, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
+
 const setGameBoard = (id) => {
   return setDivGrid(margin, MAP_PICTURE.height * CUBE_SIZE, MAP_PICTURE.width * CUBE_SIZE)(id);
 };
@@ -39,8 +42,8 @@ const drawGame = (mapGrid) => {
   const _map = [];
 
   return {
-    setMap(map) {
-      _map.push(...map);
+    async setMap(map) {
+      await _map.push(...map);
     },
     async drawMaze() {
       await mazeMap.draw(
@@ -67,11 +70,8 @@ const drawGame = (mapGrid) => {
         deleteCircles,
       );
     },
-    drawMob(mobList) {
-      const [{ x: x1, y: y1 }, { x: x2, y: y2 }] = mobList;
-      const player1 = new Pacman(x1, y1, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
-      const player2 = new Pacman(x2, y2, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
-      mazeMap.insertElements(
+    async drawMob(mobList) {
+      await mazeMap.insertElements(
         mobList,
         drawCharacter({
           cubeSize: CUBE_SIZE,
@@ -79,7 +79,6 @@ const drawGame = (mapGrid) => {
           height: CUBE_SIZE * 0.75,
         })(2000),
       );
-      return [player1, player2];
     },
   };
 };
