@@ -13,9 +13,9 @@ export function getPlayers(numberOfPlayers) {
 }
 
 // Cada frame del juego
-function frame() {
+function frame(p1, p2) {
   // TODO: dibujar pacman y fantasmas
-  console.log('frame');
+  console.log(p1.x, p2.y);
 }
 
 function updateScore(playerNum, counter) {
@@ -37,13 +37,13 @@ function* counter() {
   while (true) yield count += 1;
 }
 
-export function gameLooper() {
+export function gameLooper(pacman1, pacman2) {
   let iterations = 0;
   const gLoop = setInterval(() => {
     iterations++;
     // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
-    if (iterations === 500) clearInterval(gLoop);
-    frame();
+    if (iterations === 5) clearInterval(gLoop);
+    frame(pacman1, pacman2);
   }, 1000 / 50);
 }
 
