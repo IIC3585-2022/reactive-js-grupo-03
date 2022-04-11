@@ -23,8 +23,8 @@ const drawGame = (mapGrid) => {
     const _map = [];
 
     return {
-        setMap(map) {
-            _map.push(...map);
+        async setMap(map) {
+            await _map.push(...map);
         },
         async drawMaze() {
             await mazeMap.draw(
