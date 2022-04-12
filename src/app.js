@@ -1,5 +1,6 @@
 import Pacman from './pacman';
 
+// import { easeLinear } from 'd3';
 import { setDivGrid, setSVGG } from './assets/js/window';
 import { MAP, drawCircles, drawCubes, deleteCircles, drawCharacter } from './assets/js/map/index';
 import { MAP_PICTURE } from './setup/map/picture';
@@ -14,7 +15,7 @@ const margin = {
 
 const p1Keys = {
   left: 65,
-  up: 90,
+  up: 87,
   right: 68,
   down: 83,
 };
@@ -26,8 +27,8 @@ const p2Keys = {
   down: 40,
 };
 
-export const pacman1 = new Pacman(10, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
-export const pacman2 = new Pacman(18, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
+export const pacman2 = new Pacman(10, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
+export const pacman1 = new Pacman(18, 17, 5, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
 
 const setGameBoard = (id) => {
   return setDivGrid(margin, MAP_PICTURE.height * CUBE_SIZE, MAP_PICTURE.width * CUBE_SIZE)(id);
@@ -70,8 +71,8 @@ const drawGame = (mapGrid) => {
         deleteCircles,
       );
     },
-    async drawMob(mobList) {
-      await mazeMap.insertElements(
+    drawMob(mobList) {
+      mazeMap.insertElements(
         mobList,
         drawCharacter({
           cubeSize: CUBE_SIZE,

@@ -13,7 +13,7 @@
 const drawCircles = (dim) => (grid, data, j) => {
   const colorByNumber = (number) => {
     switch (number) {
-      case 1:
+      case 0:
         return 'yellow';
       default:
         return 'black';
@@ -25,8 +25,8 @@ const drawCircles = (dim) => (grid, data, j) => {
     .data(data)
     .enter().append('circle')
     .attr('cx', (_, i) => ((i - ((j * data.length) / (j + 1))) + 1 / 2) * dim.cubeSize)
-    .attr('cy', (d) => (d === 1) ? (j + 1 / 2) * dim.cubeSize : 0)
-    .attr('r', (d) => (d === 1) ? dim.width : 0)
+    .attr('cy', (d) => (d === 0) ? (j + 1 / 2) * dim.cubeSize : 0)
+    .attr('r', (d) => (d === 0) ? dim.width : 0)
     .style('stroke', (d, _) => colorByNumber(d))
     .style('fill', (d, _) => colorByNumber(d));
 };
@@ -38,9 +38,9 @@ const deleteCircles = (grid) => {
 const drawCubes = (dim) => (grid, data, j) => {
   const colorByNumber = (number) => {
     switch (number) {
-      case 0:
+      case -1:
         return 'black';
-      case 1:
+      case 0:
         return 'black';
       default:
         return 'blue';
