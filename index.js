@@ -8,7 +8,7 @@ export const gameDrawable = drawGame(gameGrid);
 gameDrawable.setMap(MAP_PICTURE.map)
   .then(gameDrawable.drawMaze())
   .then(gameDrawable.drawPoints())
-  .then(gameDrawable.subscribePoints([pacman1.observable, pacman2.observable]))
+  // .then(gameDrawable.subscribePoints([pacman1.observable, pacman2.observable]))
   .then(gameDrawable.drawMob([
     {
       x: pacman1.x,

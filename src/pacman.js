@@ -18,9 +18,9 @@ export default class Pacman {
 
     this.loadImgs();
 
-    this.observable = new Observable.create(async observer => {
-      observer = observer.next([this.x, this.y]);
-    });
+    // this.observable = Observable.create(async observer => {
+    //   observer.next([this.x, this.y]);
+    // });
   }
 
   draw() {
