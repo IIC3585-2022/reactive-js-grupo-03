@@ -41,7 +41,7 @@ export function gameLooper(pacmans) {
     // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
     if (iterations === 60) clearInterval(gLoop);
     frame(pacmans);
-  }, 100);
+  }, 1000);
 }
 
 function updateScore(playerNum, counter) {
