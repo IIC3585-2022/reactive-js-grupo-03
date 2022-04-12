@@ -27,6 +27,8 @@ const p2Keys = {
   down: 40,
 };
 
+export const timeTransition = 400;
+
 export const pacman1 = new Pacman(18, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
 export const pacman2 = new Pacman(10, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
 
@@ -78,7 +80,7 @@ const drawGame = (mapGrid) => {
           cubeSize: CUBE_SIZE,
           width: CUBE_SIZE * 0.75,
           height: CUBE_SIZE * 0.75,
-        })(2000),
+        })(timeTransition),
       );
     },
   };

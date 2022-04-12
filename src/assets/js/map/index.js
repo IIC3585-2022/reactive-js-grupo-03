@@ -1,5 +1,7 @@
 // Using d3 library
 
+import { easeLinear } from "d3";
+
 /**
 @param dim = {
     cubeSize,
@@ -79,6 +81,7 @@ const drawCharacter = (dim) => (timeTransition) => (grid, data) => {
         update
           .transition()
           .duration(timeTransition)
+          .ease(easeLinear)
           .attr('x', (d) => d.x * dim.cubeSize)
           .attr('y', (d) => d.y * dim.cubeSize),
       (exit) =>

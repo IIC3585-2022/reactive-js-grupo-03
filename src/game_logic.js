@@ -1,5 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { gameDrawable } from '../index';
+import { timeTransition } from './app';
 
 function getPlayer() {
   const prompt = (...args) => 'Player';
@@ -41,7 +42,7 @@ export function gameLooper(pacmans) {
     // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
     if (iterations === 60) clearInterval(gLoop);
     frame(pacmans);
-  }, 1000);
+  }, timeTransition);
 }
 
 function updateScore(playerNum, counter) {
