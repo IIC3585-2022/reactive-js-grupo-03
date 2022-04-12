@@ -64,9 +64,20 @@ export default class Pacman {
     }
   }
 
+  canMove(direction) {
+    if (direction == move.left) return [-1, 0].includes(this.map[this.y][this.x - 1])
+    if (direction == move.up) return [-1, 0].includes(this.map[this.y - 1][this.x])
+    if (direction == move.right) return [-1, 0].includes(this.map[this.y][this.x + 1])
+    if (direction == move.down) return [-1, 0].includes(this.map[this.y + 1][this.x])
+    return false;
+  }
+
   move = () => {
-    if (this.currentDirection !== this.requestedDirection) {
+    if (this.canMove(this.requestedDirection)) {
       this.currentDirection = this.requestedDirection;
+    }
+    if (!this.canMove(this.currentDirection)) {
+      this.currentDirection = move.stop;
     }
     switch (this.currentDirection) {
       case move.left:
