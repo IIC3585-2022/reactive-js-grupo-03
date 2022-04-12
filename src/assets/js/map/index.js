@@ -1,6 +1,6 @@
 // Using d3 library
 
-import { easeLinear } from "d3";
+import { easeLinear } from 'd3';
 
 /**
 @param dim = {
