@@ -10,7 +10,5 @@ node_modules/
 .parcel-cache/
 dist/
 
-# Temporary ignores
-src/pacman.js
-src/movement.js
+# Testing
 test.js
