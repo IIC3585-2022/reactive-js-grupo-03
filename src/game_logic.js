@@ -1,4 +1,6 @@
 import { fromEvent } from 'rxjs';
+import { gameDrawable } from '../index';
+import { timeTransition } from './app';
 
 function getPlayer() {
   const prompt = (...args) => 'Player';
@@ -13,9 +15,34 @@ export function getPlayers(numberOfPlayers) {
 }
 
 // Cada frame del juego
-function frame() {
+function frame(pacmans) {
   // TODO: dibujar pacman y fantasmas
-  console.log('game loop');
+  pacmans.forEach(p => p.move());
+  const [{ x: x1, y: y1 }, { x: x2, y: y2 }] = pacmans;
+  gameDrawable.drawMob([
+    {
+      x: x1,
+      y: y1,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+    },
+    {
+      x: x2,
+      y: y2,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+    },
+  ]);
+}
+
+export function gameLooper(pacmans) {
+  let iterations = 0;
+  const gLoop = setInterval(() => {
+    iterations++;
+    // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
+    if (iterations === 60) clearInterval(gLoop);
+    frame(pacmans);
+  }, timeTransition);
 }
 
 function updateScore(playerNum, counter) {
@@ -27,6 +54,7 @@ function updateScore(playerNum, counter) {
 //   for (let i = start; i >= 0; i -= 1) yield i;
 // }
 
+// Scores
 function getPlayerObservables() {
   const playerDivs = [...document.querySelectorAll('div.player-wrapper')];
   return playerDivs.map((playerDiv) => fromEvent(playerDiv, 'eatDot'));
@@ -37,17 +65,7 @@ function* counter() {
   while (true) yield count += 1;
 }
 
-export function gameLooper() {
-  let iterations = 0;
-  const gLoop = setInterval(() => {
-    iterations++;
-    // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
-    if (iterations === 78) clearInterval(gLoop);
-    frame();
-  }, 1000 / 50);
-}
-
-export function makePlayerSubsricptions() {
+export function makePlayerSubscriptions() {
   const player1Score = counter();
   const player2Score = counter();
   const [clickP1$, clickP2$] = getPlayerObservables();

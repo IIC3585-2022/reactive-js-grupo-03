@@ -1,22 +1,26 @@
-import { setGameBoard, drawGame } from './src/app';
+import { pacman1, pacman2, setGameBoard, drawGame } from './src/app';
 import { MAP_PICTURE } from './src/setup/map/picture';
+import { gameLooper } from './src/game_logic';
 
 const gameGrid = setGameBoard('#game');
-const gameDrawable = drawGame(gameGrid);
+export const gameDrawable = drawGame(gameGrid);
 
 gameDrawable.setMap(MAP_PICTURE.map)
   .then(gameDrawable.drawMaze())
   .then(gameDrawable.drawPoints())
-  .then(
-    gameDrawable.drawMob([{
-      x: 12,
-      y: 17,
+  .then(gameDrawable.drawMob([
+    {
+      x: pacman1.x,
+      y: pacman1.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
     }, {
-      x: 14,
-      y: 17,
+      x: pacman2.x,
+      y: pacman2.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
-    }]),
+    },
+  ]),
   );
+
+gameLooper([pacman1, pacman2]);
