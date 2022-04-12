@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { Observable } from 'rxjs';
 import move from './movement';
 
 export default class Pacman {
@@ -16,6 +17,10 @@ export default class Pacman {
     document.addEventListener('keydown', this.#keyPress);
 
     this.loadImgs();
+
+    this.observable = new Observable.create(async observer => {
+      observer = observer.next([this.x, this.y]);
+    });
   }
 
   draw() {

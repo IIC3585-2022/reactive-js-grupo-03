@@ -2,7 +2,7 @@ import Pacman from './pacman';
 
 // import { easeLinear } from 'd3';
 import { setDivGrid, setSVGG } from './assets/js/window';
-import { MAP, drawCircles, drawCubes, deleteCircles, drawCharacter } from './assets/js/map/index';
+import { MAP, drawCircles, drawCubes, subscribeCircles, deleteCircles, drawCharacter } from './assets/js/map/index';
 import { MAP_PICTURE } from './setup/map/picture';
 import { CUBE_SIZE } from './setup/map/cube';
 
@@ -71,6 +71,11 @@ const drawGame = (mapGrid) => {
     async deletePoints() {
       await mazeMap.delete(
         deleteCircles,
+      );
+    },
+    async subscribePoints() {
+      await mazeMap.subscribeObserver(
+        subscribeCircles({ cubeSize: CUBE_SIZE }),
       );
     },
     drawMob(mobList) {
