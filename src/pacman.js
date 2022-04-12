@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Observable } from 'rxjs';
 import move from './movement';
+import * as d3 from 'd3';
 
 export default class Pacman {
   constructor(x, y, velocity, size, map, keys) {
@@ -17,10 +18,6 @@ export default class Pacman {
     document.addEventListener('keydown', this.#keyPress);
 
     this.loadImgs();
-
-    // this.observable = Observable.create(async observer => {
-    //   observer.next([this.x, this.y]);
-    // });
   }
 
   draw() {
@@ -84,6 +81,11 @@ export default class Pacman {
     if (!this.canMove(this.currentDirection)) {
       this.currentDirection = move.stop;
     }
+    if (this.map[this.y][this.x] === 0){
+      this.map[this.y][this.x] = -1;
+      d3.selectAll(`circle[cx='${(this.x + 1/2) * this.size}'][cy='${(this.y + 1/2) * this.size}']`).remove();
+    }
+    {
     switch (this.currentDirection) {
       case move.left:
         this.x -= this.velocity;
@@ -99,4 +101,4 @@ export default class Pacman {
         break;
     }
   }
-}
+}}

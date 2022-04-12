@@ -37,27 +37,6 @@ const deleteCircles = (grid) => {
   grid.selectAll('circle').remove();
 };
 
-const subscribeCircles = (dim) => (grid) =>
-  (pacmanObservables) => {
-    console.log('BBBBBBBBBBB');
-    console.log(circles);
-    grid.selectAll('circle').data(data).forEach((circle) => {
-      pacmanObservables.forEach((pacmanObservable) => {
-        pacmanObservable.subscribe(async ([x, y]) => {
-          let [cx, cy] = [circle.cx, circle.cy];
-          if (
-            x >= cx - dim.cubeSize / 2 &&
-            x <= cx + dim.cubeSize / 2 &&
-            y >= cy - dim.cubeSize / 2 &&
-            y <= cy + dim.cubeSize / 2
-          ) {
-            circle.remove();
-          }
-        });
-      });
-    });
-};
-
 const drawCubes = (dim) => (grid, data, j) => {
   const colorByNumber = (number) => {
     switch (number) {
@@ -133,13 +112,10 @@ const MAP = (mapGrid) => {
     insertElements(array, drawFunction) {
       drawFunction(_mapGrid, array);
     },
-    subscribeObserver(subscribeFunction) {
-      return subscribeFunction(_mapGrid);
-    },
     delete(deleteFunction) {
       deleteFunction(_mapGrid);
     },
   };
 };
 
-module.exports = { MAP, drawCircles, drawCubes, subscribeCircles, deleteCircles, drawCharacter };
+module.exports = { MAP, drawCircles, drawCubes, deleteCircles, drawCharacter };
