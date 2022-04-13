@@ -26,6 +26,9 @@ const p2Keys = {
   down: 40,
 };
 
+// eslint-disable-next-line max-len
+export const pac1Image = 'https://www.pikpng.com/pngl/b/321-3212184_pacman-retro-png-pac-man-8-bit-clipart.png';
+export const pac2Image = 'https://thehistorybandits.files.wordpress.com/2015/11/png-ms.png';
 export const timeTransition = 300;
 export const pacman1 = new Pacman(9, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
 export const pacman2 = new Pacman(18, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
@@ -76,8 +79,8 @@ const drawGame = (mapGrid) => {
         mobList,
         drawCharacter({
           cubeSize: CUBE_SIZE,
-          width: CUBE_SIZE * 0.75,
-          height: CUBE_SIZE * 0.75,
+          width: CUBE_SIZE * 0.95,
+          height: CUBE_SIZE * 0.95,
         })(timeTransition),
       );
     },

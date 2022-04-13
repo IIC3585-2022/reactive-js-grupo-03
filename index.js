@@ -1,4 +1,4 @@
-import { pacman1, pacman2, setGameBoard, drawGame } from './src/app';
+import { pac1Image, pac2Image, pacman1, pacman2, setGameBoard, drawGame } from './src/app';
 import { MAP_PICTURE } from './src/setup/map/picture';
 import { gameLooper, makePlayerSubscriptions } from './src/game_logic';
 
@@ -13,12 +13,12 @@ gameDrawable.setMap(MAP_PICTURE.map)
       x: pacman1.x,
       y: pacman1.y,
       number: 0,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+      image: pac1Image,
     }, {
       x: pacman2.x,
       y: pacman2.y,
       number: 0,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+      image: pac2Image,
     },
   ]),
   );

@@ -1,6 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { gameDrawable } from '../index';
-import { timeTransition } from './app';
+import { pac1Image, pac2Image, timeTransition } from './app';
 
 function getPlayer() {
   const prompt = (...args) => 'Player';
@@ -24,13 +24,14 @@ function frame(pacmans) {
       x: x1,
       y: y1,
       number: 0,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+      // eslint-disable-next-line max-len
+      image: pac1Image,
     },
     {
       x: x2,
       y: y2,
       number: 0,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+      image: pac2Image,
     },
   ]);
 }
