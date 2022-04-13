@@ -6,3 +6,9 @@ node_modules/
 .envrc
 # Local logs
 *.log
+# Local cache
+.parcel-cache/
+dist/
+
+# Testing
+test.js
