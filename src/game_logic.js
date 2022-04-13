@@ -57,12 +57,18 @@ function frame(mobs) {
 }
 
 export function gameLooper(mobs) {
+  [pacman1, pacman2, ...ghosts] = mobs;
   let iterations = 0;
   const gLoop = setInterval(() => {
     iterations++;
     // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
-    if (iterations === 300) clearInterval(gLoop);
     frame(mobs);
+    ghosts.forEach((ghost) => {
+      if (ghost.checkCollision(pacman1) || ghost.checkCollision(pacman2)) {
+        mobs.forEach((mob) => mob.currentDirection = 0)
+        clearInterval(gLoop)
+      }
+    })
   }, timeTransition);
 }
 

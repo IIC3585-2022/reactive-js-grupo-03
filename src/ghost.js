@@ -26,22 +26,46 @@ export default class Ghost {
     return false;
   }
 
+  checkCollision = (pacman) => (pacman.x === this.x && pacman.y === this.y) ? true : false
+
   move = () => {
-    if (this.canMove(this.currentDirection % 4 + 3)) {
-      if (Math.random() > 0.5) {
-        console.log(this.currentDirection % 4 + 3);
-        this.currentDirection = this.currentDirection % 4 + 3;
-      }
-    }
-    if (this.canMove(this.currentDirection % 4 + 5)) {
-      if (Math.random() > 0.5) {
-        this.currentDirection = this.currentDirection % 4 + 3;
-      }
-    }
-    if (this.canMove(this.requestedDirection)) {
-      this.currentDirection = this.requestedDirection;
-    }
-    if (!this.canMove(this.currentDirection)) {
+    if (this.currentDirection === move.left) {
+      if (this.canMove(move.up)) {
+        if (Math.random() > 0.5) {
+          this.currentDirection = move.up;
+        }
+      } else if (this.canMove(move.down)) {
+        if (Math.random() >= 0.1) {
+          this.currentDirection = move.down;
+        }
+    }} else if (this.currentDirection === move.right) {
+      if (this.canMove(move.up)) {
+        if (Math.random() >= 0.5) {
+          this.currentDirection = move.up;
+        }
+      } else if (this.canMove(move.down)) {
+        if (Math.random() >= 0.1) {
+          this.currentDirection = move.down;
+        }
+    }} else if (this.currentDirection === move.up) {
+      if (this.canMove(move.left)) {
+        if (Math.random() >= 0.5) {
+          this.currentDirection = move.left;
+        }
+      } else if (this.canMove(move.right)) {
+        if (Math.random() >= 0.1) {
+          this.currentDirection = move.right;
+        }
+    }} else if (this.currentDirection === move.down) {
+      if (this.canMove(move.left)) {
+        if (Math.random() >= 0.5) {
+          this.currentDirection = move.left;
+        }
+      } else if (this.canMove(move.right)) {
+        if (Math.random() >= 0.1) {
+          this.currentDirection = move.right;
+        }
+    }} if (!this.canMove(this.currentDirection)) {
       this.currentDirection = move.stop;
       let directions = Object.values(move);
       let newdir = directions[Math.floor(Math.random() * directions.length)];
