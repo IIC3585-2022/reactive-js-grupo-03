@@ -68,6 +68,7 @@ export default class Pacman {
   }
 
   move = () => {
+
     if (this.canMove(this.requestedDirection)) {
       this.currentDirection = this.requestedDirection;
     }

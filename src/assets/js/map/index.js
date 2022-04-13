@@ -76,7 +76,8 @@ const drawCharacter = (dim) => (timeTransition) => (grid, data) => {
         enter
           .append('svg:image')
           .attr('x', (d) => d.x * dim.cubeSize)
-          .attr('y', (d) => d.y * dim.cubeSize),
+          .attr('y', (d) => d.y * dim.cubeSize)
+          .attr('identifier', (d) => d.id),
       (update) =>
         update
           .transition()
