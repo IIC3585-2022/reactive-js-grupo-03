@@ -1,6 +1,6 @@
 import { fromEvent } from 'rxjs';
 import { gameDrawable } from '../index';
-import { timeTransition } from './app';
+import { pac1Image, pac2Image, timeTransition } from './app';
 
 function getPlayer() {
   const prompt = (...args) => 'Player';
@@ -24,13 +24,14 @@ function frame(mobs) {
       x: x1,
       y: y1,
       number: 0,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+      // eslint-disable-next-line max-len
+      image: pac1Image,
     },
     {
       x: x2,
       y: y2,
       number: 0,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+      image: pac2Image,
     },
     {
       x: xg1,
@@ -92,11 +93,24 @@ function* counter() {
 }
 
 export function makePlayerSubscriptions() {
+  let points = 246;
   const player1Score = counter();
   const player2Score = counter();
   const [clickP1$, clickP2$] = getPlayerObservables();
-  clickP1$.subscribe(() => updateScore(1, player1Score));
-  clickP2$.subscribe(() => updateScore(2, player2Score));
+  clickP1$.subscribe(() => {
+    updateScore(1, player1Score)
+    points -= 1;
+    if (points === 0) {
+      alert('you win');
+    }
+  });
+  clickP2$.subscribe(() => {
+    updateScore(2, player2Score)
+    points -= 1;
+    if (points === 0) {
+      alert('you win');
+    }
+  });
 }
 
 export function updateContentById(id, newContent) {

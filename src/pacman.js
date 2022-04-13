@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
+
+import { signalEvent } from './game_logic';
 import move from './movement';
 import * as d3 from 'd3';
+import * as event from './events';
 
 export default class Pacman {
   constructor(x, y, velocity, size, map, keys) {
@@ -11,23 +14,14 @@ export default class Pacman {
     this.map = map;
     this.keys = keys;
 
-    this.currentDirection = null;
-    this.requestedDirection = null;
+    this.currentDirection = move.stop;
+    this.requestedDirection = move.stop;
+
+    this.div = 'player' + (keys.up === 87 ? '1' : '2');
 
     document.addEventListener('keydown', this.#keyPress);
 
     this.loadImgs();
-  }
-
-  draw() {
-    this.move();
-    // drawImage(
-    //   this.pacImages[this.pacImageIndex],
-    //   this.x,
-    //   this.y,
-    //   this.size,
-    //   this.size,
-    // );
   }
 
   loadImgs() {
@@ -81,11 +75,13 @@ export default class Pacman {
     if (!this.canMove(this.currentDirection)) {
       this.currentDirection = move.stop;
     }
-    if (this.map[this.y][this.x] === 0){
+    if (this.map[this.y][this.x] === 0) {
       this.map[this.y][this.x] = -1;
-      d3.selectAll(`circle[cx='${(this.x + 1/2) * this.size}'][cy='${(this.y + 1/2) * this.size}']`).remove();
+      d3.selectAll(
+        `circle[cx='${(this.x + 1 / 2) * this.size}'][cy='${(this.y + 1 / 2) * this.size}']`
+      ).remove();
+      signalEvent(this.div, event.eatDot)
     }
-    {
     switch (this.currentDirection) {
       case move.left:
         this.x -= this.velocity;
@@ -101,4 +97,4 @@ export default class Pacman {
         break;
     }
   }
-}}
+}
