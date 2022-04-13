@@ -67,6 +67,7 @@ export function gameLooper(mobs) {
       if (ghost.checkCollision(pacman1) || ghost.checkCollision(pacman2)) {
         mobs.forEach((mob) => mob.currentDirection = 0)
         clearInterval(gLoop)
+        window.alert(`Han perdido!`)
       }
     })
   }, timeTransition);
