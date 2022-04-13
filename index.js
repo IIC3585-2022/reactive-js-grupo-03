@@ -1,4 +1,4 @@
-import { pacman1, pacman2, setGameBoard, drawGame } from './src/app';
+import { pacman1, pacman2, ghost1, ghost2, ghost3, ghost4, setGameBoard, drawGame } from './src/app';
 import { MAP_PICTURE } from './src/setup/map/picture';
 import { gameLooper } from './src/game_logic';
 
@@ -19,8 +19,28 @@ gameDrawable.setMap(MAP_PICTURE.map)
       y: pacman2.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
+    }, {
+      x: ghost1.x,
+      y: ghost1.y,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Fantomo_ru%C4%9Da.svg/800px-Fantomo_ru%C4%9Da.svg.png',
+    }, {
+      x: ghost2.x,
+      y: ghost2.y,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Fantomo_oran%C4%9Dkolora.svg/800px-Fantomo_oran%C4%9Dkolora.svg.png',
+    }, {
+      x: ghost3.x,
+      y: ghost3.y,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Fantomo_roza.svg/800px-Fantomo_roza.svg.png',
+    }, {
+      x: ghost4.x,
+      y: ghost4.y,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Fantomo_cejana.svg/800px-Fantomo_cejana.svg.png',
     },
   ]),
   );
 
-gameLooper([pacman1, pacman2]);
+gameLooper([pacman1, pacman2, ghost1, ghost2, ghost3, ghost4]);

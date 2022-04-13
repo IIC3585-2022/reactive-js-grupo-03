@@ -1,4 +1,5 @@
 import Pacman from './pacman';
+import Ghost from './ghost';
 
 // import { easeLinear } from 'd3';
 import { setDivGrid, setSVGG } from './assets/js/window';
@@ -31,6 +32,10 @@ export const timeTransition = 400;
 
 export const pacman1 = new Pacman(18, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
 export const pacman2 = new Pacman(10, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
+export const ghost1 = new Ghost(21, 20, 1, CUBE_SIZE, MAP_PICTURE.map);
+export const ghost2 = new Ghost(21, 5, 1, CUBE_SIZE, MAP_PICTURE.map);
+export const ghost3 = new Ghost(6, 20, 1, CUBE_SIZE, MAP_PICTURE.map);
+export const ghost4 = new Ghost(6, 5, 1, CUBE_SIZE, MAP_PICTURE.map);
 
 const setGameBoard = (id) => {
   return setDivGrid(margin, MAP_PICTURE.height * CUBE_SIZE, MAP_PICTURE.width * CUBE_SIZE)(id);

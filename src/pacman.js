@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { Observable } from 'rxjs';
 import move from './movement';
 import * as d3 from 'd3';
 

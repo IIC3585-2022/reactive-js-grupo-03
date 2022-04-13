@@ -15,10 +15,10 @@ export function getPlayers(numberOfPlayers) {
 }
 
 // Cada frame del juego
-function frame(pacmans) {
+function frame(mobs) {
   // TODO: dibujar pacman y fantasmas
-  pacmans.forEach(p => p.move());
-  const [{ x: x1, y: y1 }, { x: x2, y: y2 }] = pacmans;
+  mobs.forEach(p => p.move());
+  const [{ x: x1, y: y1 }, { x: x2, y: y2 }, { x: xg1, y: yg1 }, { x: xg2, y: yg2 }, { x: xg3, y: yg3 }, { x: xg4, y: yg4 }] = mobs;
   gameDrawable.drawMob([
     {
       x: x1,
@@ -32,16 +32,37 @@ function frame(pacmans) {
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
     },
+    {
+      x: xg1,
+      y: yg1,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Fantomo_ru%C4%9Da.svg/800px-Fantomo_ru%C4%9Da.svg.png',
+    },{
+      x: xg2,
+      y: yg2,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Fantomo_oran%C4%9Dkolora.svg/800px-Fantomo_oran%C4%9Dkolora.svg.png',
+    },{
+      x: xg3,
+      y: yg3,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Fantomo_roza.svg/800px-Fantomo_roza.svg.png',
+    },{
+      x: xg4,
+      y: yg4,
+      number: 0,
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Fantomo_cejana.svg/800px-Fantomo_cejana.svg.png',
+    },
   ]);
 }
 
-export function gameLooper(pacmans) {
+export function gameLooper(mobs) {
   let iterations = 0;
   const gLoop = setInterval(() => {
     iterations++;
     // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
     if (iterations === 300) clearInterval(gLoop);
-    frame(pacmans);
+    frame(mobs);
   }, timeTransition);
 }
 
