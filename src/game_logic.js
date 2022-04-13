@@ -36,11 +36,9 @@ function frame(pacmans) {
 }
 
 export function gameLooper(pacmans) {
-  let iterations = 0;
   const gLoop = setInterval(() => {
-    iterations++;
     // TODO: cambiar para que el juego se detenga al observar evento de pausa/fin de juego
-    if (iterations === 300) clearInterval(gLoop);
+    if (pacmans.length < 2) clearInterval(gLoop);
     frame(pacmans);
   }, timeTransition);
 }
