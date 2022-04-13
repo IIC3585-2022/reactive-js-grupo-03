@@ -26,8 +26,7 @@ const p2Keys = {
   down: 40,
 };
 
-export const timeTransition = 350;
-
+export const timeTransition = 300;
 export const pacman1 = new Pacman(9, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p1Keys);
 export const pacman2 = new Pacman(18, 17, 1, CUBE_SIZE, MAP_PICTURE.map, p2Keys);
 
@@ -72,8 +71,8 @@ const drawGame = (mapGrid) => {
         deleteCircles,
       );
     },
-    drawMob(mobList) {
-      mazeMap.insertElements(
+    async drawMob(mobList) {
+      await mazeMap.insertElements(
         mobList,
         drawCharacter({
           cubeSize: CUBE_SIZE,

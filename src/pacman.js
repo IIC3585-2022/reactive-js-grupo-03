@@ -14,8 +14,8 @@ export default class Pacman {
     this.map = map;
     this.keys = keys;
 
-    this.currentDirection = null;
-    this.requestedDirection = null;
+    this.currentDirection = move.stop;
+    this.requestedDirection = move.stop;
 
     this.div = 'player' + (keys.up === 87 ? '1' : '2');
 
@@ -81,21 +81,19 @@ export default class Pacman {
       ).remove();
       signalEvent(this.div, event.eatDot)
     }
-    {
-      switch (this.currentDirection) {
-        case move.left:
-          this.x -= this.velocity;
-          break;
-        case move.up:
-          this.y -= this.velocity;
-          break;
-        case move.right:
-          this.x += this.velocity;
-          break;
-        case move.down:
-          this.y += this.velocity;
-          break;
-      }
+    switch (this.currentDirection) {
+      case move.left:
+        this.x -= this.velocity;
+        break;
+      case move.up:
+        this.y -= this.velocity;
+        break;
+      case move.right:
+        this.x += this.velocity;
+        break;
+      case move.down:
+        this.y += this.velocity;
+        break;
     }
   }
 }
