@@ -10,31 +10,37 @@ gameDrawable.setMap(MAP_PICTURE.map)
   .then(gameDrawable.drawPoints())
   .then(gameDrawable.drawMob([
     {
+      id: 'pacman1',
       x: pacman1.x,
       y: pacman1.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
     }, {
+      id: 'pacman2',
       x: pacman2.x,
       y: pacman2.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Pacman_HD.png',
     }, {
+      id: 'ghost',
       x: ghost1.x,
       y: ghost1.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Fantomo_ru%C4%9Da.svg/800px-Fantomo_ru%C4%9Da.svg.png',
     }, {
+      id: 'ghost',
       x: ghost2.x,
       y: ghost2.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Fantomo_oran%C4%9Dkolora.svg/800px-Fantomo_oran%C4%9Dkolora.svg.png',
     }, {
+      id: 'ghost',
       x: ghost3.x,
       y: ghost3.y,
       number: 0,
       image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Fantomo_roza.svg/800px-Fantomo_roza.svg.png',
     }, {
+      id: 'ghost',
       x: ghost4.x,
       y: ghost4.y,
       number: 0,

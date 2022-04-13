@@ -26,7 +26,10 @@ export default class Ghost {
     return false;
   }
 
-  checkCollision = (pacman) => (pacman.x === this.x && pacman.y === this.y) ? true : false
+  checkCollision = (pacman) => 
+    (pacman.x <= this.x + 0.9 && pacman.x >= this.x - 0.9 &&
+    pacman.y <= this.y + 0.9 && pacman.y >= this.y - 0.9)
+    ? true : false
 
   move = () => {
     if (this.currentDirection === move.left) {
