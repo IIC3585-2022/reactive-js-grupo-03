@@ -65,11 +65,24 @@ function* counter() {
 }
 
 export function makePlayerSubscriptions() {
+  let points = 246;
   const player1Score = counter();
   const player2Score = counter();
   const [clickP1$, clickP2$] = getPlayerObservables();
-  clickP1$.subscribe(() => updateScore(1, player1Score));
-  clickP2$.subscribe(() => updateScore(2, player2Score));
+  clickP1$.subscribe(() => {
+    updateScore(1, player1Score)
+    points -= 1;
+    if (points === 0) {
+      alert('you win');
+    }
+  });
+  clickP2$.subscribe(() => {
+    updateScore(2, player2Score)
+    points -= 1;
+    if (points === 0) {
+      alert('you win');
+    }
+  });
 }
 
 export function updateContentById(id, newContent) {
