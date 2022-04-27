@@ -1,0 +1,35 @@
+* {
+    /* basic configuation to make everything normal */
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(251, 255, 0);
+    background: rgb(0, 0, 0);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.game-wrapper,
+.player-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    border: 5px solid rgb(251, 255, 0);
+}

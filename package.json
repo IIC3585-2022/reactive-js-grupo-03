@@ -1,0 +1,36 @@
+{
+  "name": "reactive-js-grupo-03",
+  "version": "1.0.0",
+  "description": "[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7454953&assignment_repo_type=AssignmentRepo) # Tarea 2 - Grupo 03 Description",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "rimraf dist && rimraf .parcel-cache && parcel build index.html",
+    "lint": "eslint --fix --ext .js ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IIC3585-2022/reactive-js-grupo-03.git"
+  },
+  "keywords": [],
+  "author": "Agustin Rios <arios6@uc.cl>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IIC3585-2022/reactive-js-grupo-03/issues"
+  },
+  "homepage": "https://github.com/IIC3585-2022/reactive-js-grupo-03#readme",
+  "dependencies": {
+    "d3": "^7.4.2",
+    "jquery": "^3.6.0",
+    "parcel": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0"
+  }
+}
